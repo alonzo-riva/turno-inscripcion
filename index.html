@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inscripción a Prácticas • Turnos</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+</head>
+<body>
+  <header class="container">
+    <div>
+      <h1>Inscripción a Prácticas</h1>
+      <p class="muted">Escriba su nombre en el turno que pueda asistir. Cada bloque tiene <b>6 cupos</b>. Cuando se llenan, ya no se aceptan más inscripciones.</p>
+    </div>
+    <div class="notice">
+      <b>Importante:</b> Esta página es pública. Todos pueden ver los nombres inscritos.
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="controls">
+      <div class="grid-3">
+        <label>Mes
+          <select id="mes"></select>
+        </label>
+        <label>Día
+          <select id="dia"></select>
+        </label>
+        <label>Bloque
+          <select id="bloque">
+            <option value="M">Mañana</option>
+            <option value="T">Tarde</option>
+          </select>
+        </label>
+      </div>
+      <div class="help muted">La selección de fechas se actualizará mensualmente.</div>
+    </section>
+
+    <section class="sheet">
+      <div class="sheet-header" id="sheetTitle">—</div>
+
+      <div class="columns">
+        <div class="col">
+          <div class="col-header">Mañana</div>
+          <ol id="listaM" class="cupos" data-bloque="M"></ol>
+        </div>
+        <div class="col">
+          <div class="col-header">Tarde</div>
+          <ol id="listaT" class="cupos" data-bloque="T"></ol>
+        </div>
+      </div>
+
+      <form id="formInscribir" class="signup">
+        <input type="text" id="nombre" maxlength="50" placeholder="Tu nombre y apellido" required>
+        <button type="submit" class="primary">Inscribirme</button>
+        <span id="estado" class="muted"></span>
+      </form>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <small>Funciona con Supabase • Público (lectura) y sin login (inscripción) • v1.0</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
